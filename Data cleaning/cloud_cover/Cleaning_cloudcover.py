@@ -10,15 +10,6 @@ csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
 # List to hold dataframes
 dfs = []
 
-cloud_cover_order = [
-    'Clear (0/8)', 'Clear (1/8)', 'Mostly clear (2/8)', 'Mostly clear (3/8)',
-    'Partly cloudy (4/8)', 'Partly cloudy (5/8)', 'Mostly cloudy (6/8)', 
-    'Mostly cloudy (7/8)', 'Cloudy (8/8)', 'Cloudiness cannot be determined (9/8)', '-'
-]
-
-cloud_cover_mapping = {value: index for index, value in enumerate(cloud_cover_order)}
-
-
 # Loop over all CSV files and read them into a list
 for file in csv_files:
     # Full path to the CSV file
