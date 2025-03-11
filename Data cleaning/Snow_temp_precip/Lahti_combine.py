@@ -32,6 +32,12 @@ combined_df = combined_df.drop(columns=['Year', 'Month', 'Day', 'Time [Local tim
 # Sort by the 'Date' column
 combined_df = combined_df.sort_values(by='Date')
 
+# Convert 'Snow depth [cm]' to numeric, replacing '-' with NaN
+combined_df['Snow depth [cm]'] = pd.to_numeric(combined_df['Snow depth [cm]'], errors='coerce')
+
+# Fill NaN values with a 7-day rolling mean
+combined_df['Snow depth [cm]'] = combined_df['Snow depth [cm]'].fillna(combined_df['Snow depth [cm]'].rolling(7, min_periods=1).mean())
+
 # Save the combined DataFrame to a new CSV file
 output_file_path = os.path.join(folder_path, 'Lahti_snow_temp_preci.csv')
 combined_df.to_csv(output_file_path, index=False)

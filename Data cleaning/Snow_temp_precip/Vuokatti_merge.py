@@ -34,6 +34,12 @@ else:
 # Merge temperature data based on 'Date'
 merged_df = main_df.merge(temp_df, on="Date", how="left")
 
+# Convert 'Snow depth [cm]' to numeric, replacing '-' with NaN
+merged_df['Snow depth [cm]'] = pd.to_numeric(merged_df['Snow depth [cm]'], errors='coerce')
+
+# Fill NaN values with a 7-day rolling mean
+merged_df['Snow depth [cm]'] = merged_df['Snow depth [cm]'].fillna(merged_df['Snow depth [cm]'].rolling(7, min_periods=1).mean())
+
 # Save the merged DataFrame to a new file
 output_file = os.path.join(folder_path, "Vuokatti_snow_temp_preci.csv")
 merged_df.to_csv(output_file, index=False)
