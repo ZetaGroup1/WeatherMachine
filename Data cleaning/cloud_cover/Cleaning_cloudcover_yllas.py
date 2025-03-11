@@ -3,7 +3,7 @@ import os
 import re
 
 # Directory where CSV files are stored
-folder_path = 'C:\\code\\repos\\WeatherMachine\\Levi - Ylläs - Ruka - Himos\\Levi'
+folder_path = 'C:\\code\\repos\\WeatherMachine\\Levi - Ylläs - Ruka - Himos\\Levi_Cloud_Coverage'
 
 # Create a new folder for combined files
 combined_folder = os.path.join(folder_path, "combined")
@@ -64,4 +64,3 @@ for prefix in prefixes:
         combined_df.to_csv(output_file, index=False)
         
         print(f"CSV files for {prefix} combined successfully and saved in 'combined' folder!")
-
