@@ -1,6 +1,5 @@
 import pandas as pd
 import os
-import re
 
 # Directory where CSV files are stored
 folder_path = 'C:\\Repos\\Project2\\WeatherMachine\\Data cleaning\\cloud_cover'
@@ -12,17 +11,17 @@ os.makedirs(combined_folder, exist_ok=True)
 # Get a list of all CSV files in the folder
 csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
 
-# Identify unique prefixes
-prefixes = ['Lahti_', 'Tahko_', 'Vuokatti_']
+# Identify unique venue names dynamically by extracting the part before the first underscore
+venue_names = set([file.split('_')[0] for file in csv_files])
 
-# Dictionary to store DataFrames for each prefix
+# Dictionary to store DataFrames for each venue
 combined_dfs = {}
 
-for prefix in prefixes:
-    # Filter files that start with the current prefix
-    matching_files = [file for file in csv_files if file.startswith(prefix)]
+for venue in venue_names:
+    # Filter files that start with the current venue name
+    matching_files = [file for file in csv_files if file.startswith(venue + "_")]
     
-    # List to hold dataframes for this prefix
+    # List to hold dataframes for this venue
     dfs = []
     
     for file in matching_files:
@@ -30,7 +29,7 @@ for prefix in prefixes:
         df = pd.read_csv(file_path)
         dfs.append(df)
     
-    # Combine all DataFrames for this prefix if any files exist
+    # Combine all DataFrames for this venue if any files exist
     if dfs:
         combined_df = pd.concat(dfs, ignore_index=True)
         
@@ -60,8 +59,8 @@ for prefix in prefixes:
         combined_df = combined_df.sort_values(by='Date')
         
         # Save to CSV in the combined folder
-        output_file = os.path.join(combined_folder, f'{prefix}combined.csv')
+        output_file = os.path.join(combined_folder, f'{venue}_combined.csv')
         combined_df.to_csv(output_file, index=False)
         
-        print(f"CSV files for {prefix} combined successfully and saved in 'combined' folder!")
+        print(f"CSV files for {venue} combined successfully and saved in 'combined' folder!")
 
