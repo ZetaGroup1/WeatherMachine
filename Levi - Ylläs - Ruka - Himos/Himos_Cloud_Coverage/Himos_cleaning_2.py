@@ -1,5 +1,3 @@
-import pandas as pd
-
 input_file = r"Levi - Ylläs - Ruka - Himos\Himos_Cloud_Coverage\Himos_03_cleaned.csv"
 output_file = r"Levi - Ylläs - Ruka - Himos\Himos_Cloud_Coverage\Himos_03_cleaned_2.csv"
 

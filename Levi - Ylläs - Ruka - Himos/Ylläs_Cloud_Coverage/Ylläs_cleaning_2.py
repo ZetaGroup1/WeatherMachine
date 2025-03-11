@@ -1,5 +1,5 @@
-input_file = r"Levi - Ylläs - Ruka - Himos\Levi_Cloud_Coverage\Levi_06_cleaned.csv"
-output_file = r"Levi - Ylläs - Ruka - Himos\Levi_Cloud_Coverage\Levi_06_cleaned_2.csv"
+input_file = r"Levi - Ylläs - Ruka - Himos\Ylläs_Cloud_Coverage\Ylläs_04_cleaned.csv"
+output_file = r"Levi - Ylläs - Ruka - Himos\Ylläs_Cloud_Coverage\Ylläs_04_cleaned_2.csv"
 
 with open(input_file, "r", encoding="utf-8") as f:
     lines = f.readlines()
