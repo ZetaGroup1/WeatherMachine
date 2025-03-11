@@ -11,8 +11,6 @@ df_Himos_02 = df_Himos_02[['Date', 'Precipitation amount [mm]', 'Snow depth [cm]
 
 combined_df = pd.concat([df_Himos_01, df_Himos_02])
 
-combined_df.to_csv('Levi - Ylläs - Ruka - Himos/Himos_Combined/test.csv', index=False)
-
 df_Himos_CC = pd.read_csv('Levi - Ylläs - Ruka - Himos/Himos_Cloud_Coverage/combined/Himos_combined.csv')
 
 df_Himos_CC = df_Himos_CC[['Date', 'cloud_cover_code']]
