@@ -79,5 +79,5 @@ def process_files(folder_path):
         print(f'Saved: {output_path}')
 
 if __name__ == "__main__":
-    folder_path = 'C:\\Repos\\Project2\\WeatherMachine\\Data cleaning\\Test_merge'  # Change this to your actual folder path
+    folder_path = 'C:\\Repos\\Project2\\WeatherMachine\\Data cleaning\\Final_merge'  # Change this to your actual folder path
     process_files(folder_path)
