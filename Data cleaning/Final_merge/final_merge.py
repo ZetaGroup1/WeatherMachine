@@ -19,7 +19,7 @@ def process_files(folder_path):
     
     # Dictionary to store dataframes for each venue
     venue_dfs = {}
-    required_columns = ['Precipitation amount [mm]', 'Snow depth [cm]', 'Average temperature [°C]', 'Cloud cover [1/8]', 'cloud_cover_code']
+    required_columns = ['Precipitation amount [mm]', 'Snow depth [cm]', 'Average temperature [°C]', 'cloud_cover_code']
     
     # Process each file in the folder
     for file in os.listdir(folder_path):
@@ -31,10 +31,13 @@ def process_files(folder_path):
             
             # Ensure Date column is converted properly
             df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+
+            # Filter rows between 2005-01-01 and 2024-12-31
+            df = df[(df['Date'] >= '2005-01-01') & (df['Date'] <= '2024-12-31')]
             
             # Convert all other columns to numeric
             for col in df.columns:
-                if col != 'Date':
+                if col not in {'Date'}:
                     df[col] = pd.to_numeric(df[col], errors='coerce')
             
             # Keep only necessary columns that exist in the file
@@ -49,8 +52,6 @@ def process_files(folder_path):
     
     # Process and save final files
     for i, (venue, df) in enumerate(venue_dfs.items()):
-        if i >= 10:  # Stop after 10 files
-            break
         
         # Ensure Date is properly formatted before merging
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
