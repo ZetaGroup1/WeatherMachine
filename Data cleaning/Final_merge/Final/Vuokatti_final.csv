@@ -1,5 +1,4 @@
 Date,cloud_cover_code,Precipitation amount [mm],Snow depth [cm],Average temperature [°C],Direct solar radiation mean [W/m2],days_above_10cm,days_above_20cm
-2005-01-01,0.0,-1.0,10.0,-2.5,,0,0
 2005-01-02,8.0,0.2,10.0,-1.3,1.1,0,0
 2005-01-03,7.0,2.2,10.0,-1.8,0.7,0,0
 2005-01-04,7.0,0.7,15.0,-2.9,1.8,1,0

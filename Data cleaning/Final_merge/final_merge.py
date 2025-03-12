@@ -32,8 +32,8 @@ def process_files(folder_path):
             # Ensure Date column is converted properly
             df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
-            # Filter rows between 2005-01-01 and 2024-12-31
-            df = df[(df['Date'] >= '2005-01-01') & (df['Date'] <= '2024-12-31')]
+            # Filter rows between 2005-01-02 and 2024-12-31
+            df = df[(df['Date'] >= '2005-01-02') & (df['Date'] <= '2024-12-31')]
             
             # Convert all other columns to numeric
             for col in df.columns:
@@ -79,5 +79,5 @@ def process_files(folder_path):
         print(f'Saved: {output_path}')
 
 if __name__ == "__main__":
-    folder_path = 'C:\\Repos\\Project2\\WeatherMachine\\Data cleaning\\Final_merge'  # Change this to your actual folder path
+    folder_path = 'C:\Code\miniproject_2\WeatherMachine\Data cleaning\Final_merge'  # Change this to your actual folder path
     process_files(folder_path)
